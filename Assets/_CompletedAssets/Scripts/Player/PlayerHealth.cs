@@ -65,6 +65,24 @@ namespace CompleteProject
             // Reduce the current health by the damage amount.
             currentHealth -= amount;
 
+            // Make environment weird when half life is lost
+            bool halfLife = (currentHealth < startingHealth * 0.5);
+            float currentHealthProcent = Mathf.Max(((float)currentHealth / (float)startingHealth) * 100.0f, 0.0f);
+            if (currentHealthProcent < 20.0f)
+            {
+                GameObject.Find("HealthText").GetComponent<Text>().text = currentHealthProcent.ToString() + "% - Du klarar dig inte länge till!!";
+            }
+            else if (currentHealthProcent < 50.0f)
+            {
+                GameObject.Find("HealthText").GetComponent<Text>().text = currentHealthProcent.ToString() + "% - Din syn har blivit skadad!";
+            }
+            else
+            {
+                GameObject.Find("HealthText").GetComponent<Text>().text = currentHealthProcent.ToString() + "%";
+            }
+            GameObject.Find("VRViewCamera").GetComponent<Isoline>().enabled = halfLife;
+            GameObject.Find("VRCamera").GetComponent<Isoline>().enabled = halfLife;
+
             // Set the health bar's value to the current health.
             healthSlider.value = currentHealth;
 
@@ -104,7 +122,7 @@ namespace CompleteProject
         public void RestartLevel ()
         {
             // Reload the level that is currently loaded.
-            SceneManager.LoadScene (0);
+            //SceneManager.LoadScene (0);
         }
     }
 }

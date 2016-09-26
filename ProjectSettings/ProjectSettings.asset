@@ -10,13 +10,14 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Unity Technologies
-  productName: Nightmares
+  companyName: Visualization Center C
+  productName: Survival Shooter VR Touch Co-op Hybrid
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenStyle: 0
-  m_ShowUnitySplashScreen: 1
-  m_VirtualRealitySplashScreen: {fileID: 0}
+  m_ShowUnitySplashScreen: 0
+  m_VirtualRealitySplashScreen: {fileID: 2800000, guid: b799304196841b2459e8d79f89bd2566,
+    type: 3}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
@@ -30,7 +31,7 @@ PlayerSettings:
   iosShowActivityIndicatorOnLoading: -1
   androidShowActivityIndicatorOnLoading: -1
   iosAppInBackgroundBehavior: 0
-  displayResolutionDialog: 1
+  displayResolutionDialog: 0
   iosAllowHTTPDownload: 1
   allowedAutorotateToPortrait: 1
   allowedAutorotateToPortraitUpsideDown: 1
@@ -179,7 +180,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 0}
+      m_Icon: {fileID: 2800000, guid: b799304196841b2459e8d79f89bd2566, type: 3}
       m_Width: 128
       m_Height: 128
   m_BuildTargetBatching:
@@ -485,7 +486,7 @@ PlayerSettings:
   PSM::VR::enable: 0
   PSP2::VR::enable: 0
   SamsungTV::VR::enable: 0
-  Standalone::VR::enable: 0
+  Standalone::VR::enable: 1
   Tizen::VR::enable: 0
   WebGL::VR::enable: 0
   WebGL::analyzeBuildSize: 0
@@ -560,7 +561,7 @@ PlayerSettings:
   XboxOne::VR::enabledDevices: []
   iOS::VR::enabledDevices: []
   tvOS::VR::enabledDevices: []
-  cloudProjectId: 
-  projectName: 
-  organizationId: 
+  cloudProjectId: 790340d4-e8b7-4d50-a4ce-74b8db21691a
+  projectName: SurvivalSample
+  organizationId: eriksunden
   cloudEnabled: 0

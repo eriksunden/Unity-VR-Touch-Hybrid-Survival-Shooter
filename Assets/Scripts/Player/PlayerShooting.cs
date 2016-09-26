@@ -32,12 +32,23 @@ public class PlayerShooting : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && timer >= timeBetweenBullets && Time.timeScale != 0)
+        if(Time.timeScale != 0 && timer >= timeBetweenBullets)
         {
-            Shoot ();
+            if (Input.GetJoystickNames().Length > 0)
+            {
+                float primaryAttack = Input.GetAxis("PrimaryAttack");
+                if(primaryAttack > 0)
+                {
+                    Shoot();
+                }
+            }
+            else if (Input.GetButton("Fire1"))
+            {
+                Shoot ();
+            }
         }
 
-        if(timer >= timeBetweenBullets * effectsDisplayTime)
+        if (timer >= timeBetweenBullets * effectsDisplayTime)
         {
             DisableEffects ();
         }

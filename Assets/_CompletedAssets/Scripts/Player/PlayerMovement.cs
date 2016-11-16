@@ -92,11 +92,6 @@ namespace CompleteProject
                 }
             }
 
-            // Move the player around the scene.
-            Move (h, v);
-
-            // Turn the player to face the mouse cursor.
-            //Turning ();
             // Smoothly interpolate this gameobject's rotation towards that of the VR headset.
             Quaternion headRotation = Quaternion.Slerp(transform.rotation, UnityEngine.VR.InputTracking.GetLocalRotation(UnityEngine.VR.VRNode.Head),
                 m_Damping * (1 - Mathf.Exp(k_DampingCoef * Time.deltaTime)));
@@ -104,6 +99,19 @@ namespace CompleteProject
             Vector3 eulerAngles = headRotation.eulerAngles;
             eulerAngles = new Vector3(0, eulerAngles.y, 0);
             transform.rotation = Quaternion.Euler(eulerAngles);
+
+            // Move the player around the scene.
+            // Set the movement vector based on the axis input.
+            movement.Set(h, 0f, v);
+
+            // Normalise the movement vector and make it proportional to the speed per second.
+            movement = movement.normalized * speed * Time.deltaTime;
+
+            //Rotate movement by the current axis rotation
+            movement = transform.rotation * movement;
+
+            // Move the player to it's current position plus the movement.
+            playerRigidbody.MovePosition(transform.position + movement);
 
             // Animate the player.
             Animating (h, v);
@@ -133,19 +141,6 @@ namespace CompleteProject
                     break;
             }
         }
-
-        void Move (float h, float v)
-        {
-            // Set the movement vector based on the axis input.
-            movement.Set (h, 0f, v);
-            
-            // Normalise the movement vector and make it proportional to the speed per second.
-            movement = movement.normalized * speed * Time.deltaTime;
-
-            // Move the player to it's current position plus the movement.
-            playerRigidbody.MovePosition (transform.position + movement);
-        }
-
 
         void Turning ()
         {
